@@ -4,7 +4,7 @@ use warnings;
 use base 'DBIx::Class';
 use Scalar::Util qw/blessed/;
 
-our $VERSION = 0.01;
+our $VERSION = '0.03';
 
 sub as_fdat {
     my $self = shift;

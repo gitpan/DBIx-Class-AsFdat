@@ -1,18 +1,17 @@
 use strict;
 use warnings;
-use ExtUtils::MakeMaker;
+use inc::Module::Install;
 
-WriteMakefile(
-    NAME                => 'DBIx::Class::AsFdat',
-    AUTHOR              => 'Atsushi Kobayashi <atsushi __at__ mobilefactory.jp>',
-    VERSION_FROM        => 'lib/DBIx/Class/AsFdat.pm',
-    ABSTRACT_FROM       => 'lib/DBIx/Class/AsFdat.pm',
-    PL_FILES            => {},
-    PREREQ_PM => {
-        'Test::More'  => 0,
-        'version'     => 0,
-        'DBIx::Class' => 0,
-    },
-    dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
-    clean               => { FILES => 'DBIx-Class-AsFdat-*' },
-);
+name     'DBIx-Class-AsFdat';
+all_from 'lib/DBIx/Class/AsFdat.pm';
+
+requires 'DBIx::Class';
+requires 'Scalar::Util';
+
+use_test_base;
+build_requires 'Test::Declare';
+build_requires 'DateTime';
+
+auto_install;
+WriteAll;
+
